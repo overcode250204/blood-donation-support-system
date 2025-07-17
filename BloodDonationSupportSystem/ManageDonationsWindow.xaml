@@ -1,0 +1,14 @@
+<Window x:Class="BloodDonationSupportSystem.ManageDonationsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quản lí đơn hiến máu" Height="400" Width="700" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid Background="#f5f6fa">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
+            <TextBlock Text="Quản lí đơn hiến máu" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,24"/>
+            <Button Content="Đơn hiến máu" Height="40" Margin="0,0,0,12" Click="DonationListButton_Click"/>
+            <Button Content="Kiểm tra sức khỏe" Height="40" Margin="0,0,0,12" Click="HealthCheckButton_Click"/>
+            <Button Content="Lấy Máu" Height="40" Margin="0,0,0,12" Click="BloodTakingButton_Click"/>
+            <Button Content="Quay lại" Height="36" Margin="0,24,0,0" Click="BackButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window> 

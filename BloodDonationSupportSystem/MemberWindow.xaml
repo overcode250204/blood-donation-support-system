@@ -1,0 +1,16 @@
+<Window x:Class="BloodDonationSupportSystem.MemberWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Member" Height="200" Width="400">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Welcome, Member!" FontSize="24" Margin="0,0,0,20"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20" >
+                <Button Content="Tài khoản" Width="110" Height="38" Margin="0,0,8,0" Click="AccountButton_Click"/>
+                <Button Content="Đăng Ký Hiến Máu" Width="140" Height="38" Margin="0,0,8,0" Click="RegisterBloodButton_Click"/>
+                <Button Content="Lịch Sử Hiến Máu" Width="140" Height="38" Click="HistoryButton_Click"/>
+            </StackPanel>
+            <Button Content="Đăng xuất" Width="120" Height="35" Click="LogoutButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window> 

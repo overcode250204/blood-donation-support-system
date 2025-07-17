@@ -1,0 +1,27 @@
+<Window x:Class="BloodDonationSupportSystem.BloodDonationScheduleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Đăng ký hiến máu" Height="520" Width="600" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid Background="#f5f6fa">
+        <Border CornerRadius="12" Background="White" Padding="18" Margin="18">
+            <StackPanel>
+                <TextBlock Text="Danh sách lịch hiến máu tương lai" FontSize="20" FontWeight="Bold" Foreground="#2d3436" HorizontalAlignment="Center" Margin="0,0,0,16"/>
+                <ListView x:Name="ScheduleListView" Height="260" SelectionMode="Single" Margin="0,0,0,12">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Bệnh viện" Width="180" DisplayMemberBinding="{Binding AddressHospital}"/>
+                            <GridViewColumn Header="Ngày" Width="90" DisplayMemberBinding="{Binding DonationDate}"/>
+                            <GridViewColumn Header="Bắt đầu" Width="70" DisplayMemberBinding="{Binding StartTime}"/>
+                            <GridViewColumn Header="Kết thúc" Width="70" DisplayMemberBinding="{Binding EndTime}"/>
+                            <GridViewColumn Header="Đã đăng ký" Width="80" DisplayMemberBinding="{Binding AmountRegistration}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Content="Đăng ký" Width="100" Height="34" Click="RegisterButton_Click"/>
+                    <Button Content="Đóng" Width="80" Height="34" Click="CloseButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window> 
