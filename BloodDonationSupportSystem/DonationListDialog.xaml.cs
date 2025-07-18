@@ -9,6 +9,7 @@ namespace BloodDonationSupportSystem
     {
         private BloodDonationScheduleService _service;
         private List<DonationRegistration> _pending;
+        private RegistrationService _registrationService;
         public DonationListDialog()
         {
             InitializeComponent();
@@ -16,6 +17,7 @@ namespace BloodDonationSupportSystem
             var scheduleRepo = new DAL.Repositories.BloodDonationScheduleRepository(context);
             var regRepo = new DAL.Repositories.BloodDonationRegistrationRepository(context);
             _service = new BloodDonationScheduleService(scheduleRepo, regRepo);
+            _registrationService = new RegistrationService(context);
             LoadPending();
         }
         private void LoadPending()
@@ -31,11 +33,11 @@ namespace BloodDonationSupportSystem
                 MessageBox.Show("Vui lòng chọn một đơn để chấp nhận!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            var dialog = new HealthCheckDialog(selected.DonationRegistrationId);
-            dialog.Owner = this;
-            if (dialog.ShowDialog() == true)
+            var result = MessageBox.Show($"Bạn có chắc chắn muốn chấp nhận đơn của {selected.Donor.FullName}?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
             {
-                MessageBox.Show("Đã chấp nhận đơn và tạo phiếu kiểm tra sức khỏe!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
+                _registrationService.AcceptRegistration(selected.DonationRegistrationId);
+                MessageBox.Show("Đã chấp nhận đơn thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadPending();
             }
         }

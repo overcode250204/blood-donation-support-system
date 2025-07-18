@@ -80,5 +80,24 @@ namespace DAL.Repositories
                 .OrderBy(r => r.RegistrationDate)
                 .ToList();
         }
+        public List<DonationRegistration> GetAcceptedRegistrationsWithoutHealthCheck()
+        {
+            return _context.DonationRegistrations
+                .Include(r => r.Donor)
+                .Include(r => r.BloodDonationSchedule)
+                .Where(r => r.Status == "CHẤP NHẬN" && r.HealthCheck == null)
+                .OrderBy(r => r.RegistrationDate)
+                .ToList();
+        }
+        public List<DonationRegistration> GetRegistrationsHealthCheckPassed()
+        {
+            return _context.DonationRegistrations
+                .Include(r => r.Donor)
+                .Include(r => r.BloodDonationSchedule)
+                .Include(r => r.HealthCheck)
+                .Where(r => r.HealthCheck != null && r.HealthCheck.HealthStatus == "ĐẠT" && r.DonationProcess == null)
+                .OrderBy(r => r.RegistrationDate)
+                .ToList();
+        }
     }
 } 

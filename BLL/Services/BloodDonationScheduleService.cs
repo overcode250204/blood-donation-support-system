@@ -64,26 +64,48 @@ namespace BLL.Services
         {
             return _registrationRepo.GetPendingRegistrations();
         }
-        public void AcceptRegistration(Guid registrationId, double height, double weight, string healthStatus, string note)
+        public bool AddSchedule(BlooddonationsupportsystemContext context, string addressHospital, DateOnly donationDate, TimeOnly startTime, TimeOnly endTime, out string error, Guid staffId, int amountRegistration)
         {
-            var context = new DAL.Entities.BlooddonationsupportsystemContext();
-            var reg = context.DonationRegistrations.FirstOrDefault(r => r.DonationRegistrationId == registrationId);
-            if (reg != null && reg.Status == "CHƯA HIẾN")
+            error = null;
+            // Validate trùng lịch (ngày, địa điểm, giờ giao nhau)
+            var exists = context.BloodDonationSchedules.Any(s =>
+                s.AddressHospital == addressHospital &&
+                s.DonationDate == donationDate &&
+                ((startTime < s.EndTime && endTime > s.StartTime))
+            );
+            if (exists)
             {
-                // Insert healthcheck
-                var healthCheck = new DAL.Entities.HealthCheck
-                {
-                    HealthCheckId = Guid.NewGuid(),
-                    Height = height,
-                    Weight = weight,
-                    HealthStatus = healthStatus,
-                    Note = note,
-                    DonationRegistrationId = registrationId
-                };
-                context.HealthChecks.Add(healthCheck);
-                reg.Status = "ĐÃ HIẾN"; // hoặc cập nhật sang trạng thái tiếp theo nếu cần
-                context.SaveChanges();
+                error = "Đã có lịch hiến máu trùng thời gian và địa điểm!";
+                return false;
             }
+            if (donationDate < DateOnly.FromDateTime(DateTime.Now))
+            {
+                error = "Không thể thêm lịch hiến máu trong quá khứ!";
+                return false;
+            }
+            if (startTime >= endTime)
+            {
+                error = "Giờ bắt đầu phải nhỏ hơn giờ kết thúc!";
+                return false;
+            }
+            if (amountRegistration < 0)
+            {
+                error = "Số lượng người đăng ký phải >= 0!";
+                return false;
+            }
+            var schedule = new BloodDonationSchedule
+            {
+                BloodDonationScheduleId = Guid.NewGuid(),
+                AddressHospital = addressHospital,
+                DonationDate = donationDate,
+                StartTime = startTime,
+                EndTime = endTime,
+                AmountRegistration = amountRegistration,  
+                EditedByStaff = staffId
+            };
+            context.BloodDonationSchedules.Add(schedule);
+            context.SaveChanges();
+            return true;
         }
     }
 } 

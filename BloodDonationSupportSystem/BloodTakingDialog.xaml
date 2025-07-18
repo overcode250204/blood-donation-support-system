@@ -1,12 +1,24 @@
 <Window x:Class="BloodDonationSupportSystem.BloodTakingDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Lấy Máu" Height="350" Width="500" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" WindowStyle="ToolWindow">
+        Title="Lấy Máu" Height="400" Width="700" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Grid Background="#f5f6fa">
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
-            <TextBlock Text="Lấy Máu" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,24"/>
-            <!-- Nội dung lấy máu ở đây -->
-            <Button Content="Quay lại" Height="36" Click="BackButton_Click"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="650">
+            <TextBlock Text="Danh sách đơn đã kiểm tra sức khỏe ĐẠT" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,24"/>
+            <ListView x:Name="PassedListView" Height="220" SelectionMode="Single" Margin="0,0,0,12">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Kết quả xét nghiệm" Width="120" DisplayMemberBinding="{Binding DonationProcess.BloodTest}"/>
+                        <GridViewColumn Header="Thể tích (ml)" Width="100" DisplayMemberBinding="{Binding DonationProcess.VolumeMl}"/>
+                        <GridViewColumn Header="Trạng thái" Width="120" DisplayMemberBinding="{Binding DonationProcess.Status}"/>
+                        <GridViewColumn Header="Mã nhóm máu" Width="90" DisplayMemberBinding="{Binding DonationProcess.BloodTypeId}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,12">
+                <Button Content="Nhập thông tin lấy máu" Width="180" Height="34" Margin="0,0,8,0" Click="InputProcessInfoButton_Click"/>
+                <Button Content="Quay lại" Height="34" Click="BackButton_Click"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window> 
