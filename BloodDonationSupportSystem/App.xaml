@@ -4,6 +4,59 @@
              xmlns:local="clr-namespace:BloodDonationSupportSystem"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
-         
+        <!-- Button Style -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#0984e3"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="6"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#0056b3"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#003366"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- TextBox Style -->
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="6"/>
+            <Setter Property="Margin" Value="0,4,0,12"/>
+            <Setter Property="BorderBrush" Value="#b2bec3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+        <!-- Window Style -->
+        <Style TargetType="Window">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Background" Value="#f5f6fa"/>
+        </Style>
+        <!-- ListView Style -->
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="0,8,0,8"/>
+            <Setter Property="BorderBrush" Value="#dfe6e9"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+        <!-- Border Style: KHÔNG set CornerRadius ở đây để tránh lỗi với control con -->
+        <Style TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Padding" Value="18"/>
+        </Style>
     </Application.Resources>
 </Application>

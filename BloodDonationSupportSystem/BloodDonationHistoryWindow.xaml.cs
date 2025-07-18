@@ -17,10 +17,40 @@ namespace BloodDonationSupportSystem
             _service = service;
             LoadHistory();
         }
+        private class DonationHistoryViewModel
+        {
+            public string AddressHospital { get; set; }
+            public string DisplayDate { get; set; }
+            public string RegistrationDate { get; set; }
+            public string Status { get; set; }
+            public string DateCompleteDonation { get; set; }
+        }
         private void LoadHistory()
         {
             _history = _service.GetUserHistory(_user.UserId);
-            HistoryListView.ItemsSource = _history;
+            var viewModels = new List<DonationHistoryViewModel>();
+            foreach (var item in _history)
+            {
+                var address = item.BloodDonationSchedule?.AddressHospital ?? "";
+                var ngayHien = item.BloodDonationSchedule?.DonationDate;
+                string displayDate = ngayHien != null && ngayHien.Value != default(DateOnly)
+                    ? ngayHien.Value.ToString("dd/MM/yyyy")
+                    : item.RegistrationDate.ToString("dd/MM/yyyy");
+                string registrationDate = item.RegistrationDate.ToString("dd/MM/yyyy");
+                string status = item.Status ?? "";
+                string dateComplete = (status == "ĐÃ HIẾN" && item.DateCompleteDonation != null)
+                    ? item.DateCompleteDonation.Value.ToString("dd/MM/yyyy")
+                    : "";
+                viewModels.Add(new DonationHistoryViewModel
+                {
+                    AddressHospital = address,
+                    DisplayDate = displayDate,
+                    RegistrationDate = registrationDate,
+                    Status = status,
+                    DateCompleteDonation = dateComplete
+                });
+            }
+            HistoryListView.ItemsSource = viewModels;
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {

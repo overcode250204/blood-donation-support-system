@@ -9,11 +9,11 @@
                 <ListView x:Name="HistoryListView" Height="260" SelectionMode="Single" Margin="0,0,0,12">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Bệnh viện" Width="180" DisplayMemberBinding="{Binding BloodDonationSchedule.AddressHospital}"/>
-                            <GridViewColumn Header="Ngày hiến" Width="90" DisplayMemberBinding="{Binding BloodDonationSchedule.DonationDate}"/>
+                            <GridViewColumn Header="Bệnh viện" Width="180" DisplayMemberBinding="{Binding AddressHospital}"/>
+                            <GridViewColumn Header="Ngày hiến/Đăng ký" Width="120" DisplayMemberBinding="{Binding DisplayDate}"/>
                             <GridViewColumn Header="Ngày đăng ký" Width="90" DisplayMemberBinding="{Binding RegistrationDate}"/>
                             <GridViewColumn Header="Trạng thái" Width="100" DisplayMemberBinding="{Binding Status}"/>
-                            <GridViewColumn Header="Ngày hoàn thành" Width="100" DisplayMemberBinding="{Binding DateCompleteDonation}"/>
+                            <GridViewColumn Header="Ngày hoàn thành" Width="120" DisplayMemberBinding="{Binding DateCompleteDonation}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

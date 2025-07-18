@@ -1,7 +1,7 @@
 <Window x:Class="BloodDonationSupportSystem.HealthCheckInputDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Nhập thông tin kiểm tra sức khỏe" Height="340" Width="400" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" WindowStyle="ToolWindow">
+        Title="Nhập thông tin kiểm tra sức khỏe" Height="400" Width="400" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Grid Background="#f5f6fa">
         <Border CornerRadius="12" Background="White" Padding="24" Margin="18">
             <StackPanel>

@@ -10,7 +10,7 @@
                     <GridView>
                         <GridViewColumn Header="Họ tên" Width="120" DisplayMemberBinding="{Binding Donor.FullName}"/>
                         <GridViewColumn Header="SĐT" Width="100" DisplayMemberBinding="{Binding Donor.PhoneNumber}"/>
-                        <GridViewColumn Header="Bệnh viện" Width="110" DisplayMemberBinding="{Binding BloodDonationSchedule.AddressHospital}"/>
+                        <GridViewColumn Header="Bệnh viện" Width="115" DisplayMemberBinding="{Binding BloodDonationSchedule.AddressHospital}"/>
                         <GridViewColumn Header="Ngày hiến" Width="80" DisplayMemberBinding="{Binding BloodDonationSchedule.DonationDate}"/>
                         <GridViewColumn Header="Ngày đăng ký" Width="80" DisplayMemberBinding="{Binding RegistrationDate}"/>
                     </GridView>
