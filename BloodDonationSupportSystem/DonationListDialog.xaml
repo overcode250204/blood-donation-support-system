@@ -10,9 +10,9 @@
                     <GridView>
                         <GridViewColumn Header="Họ tên" Width="120" DisplayMemberBinding="{Binding Donor.FullName}"/>
                         <GridViewColumn Header="SĐT" Width="100" DisplayMemberBinding="{Binding Donor.PhoneNumber}"/>
-                        <GridViewColumn Header="Bệnh viện" Width="120" DisplayMemberBinding="{Binding BloodDonationSchedule.AddressHospital}"/>
-                        <GridViewColumn Header="Ngày hiến" Width="90" DisplayMemberBinding="{Binding BloodDonationSchedule.DonationDate}"/>
-                        <GridViewColumn Header="Ngày đăng ký" Width="90" DisplayMemberBinding="{Binding RegistrationDate}"/>
+                        <GridViewColumn Header="Bệnh viện" Width="110" DisplayMemberBinding="{Binding BloodDonationSchedule.AddressHospital}"/>
+                        <GridViewColumn Header="Ngày hiến" Width="80" DisplayMemberBinding="{Binding BloodDonationSchedule.DonationDate}"/>
+                        <GridViewColumn Header="Ngày đăng ký" Width="80" DisplayMemberBinding="{Binding RegistrationDate}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -20,7 +20,7 @@
                 <Button Content="Chấp nhận" Width="100" Height="34" Margin="0,0,8,0" Click="AcceptButton_Click"/>
                 <Button Content="Hủy" Width="80" Height="34" Click="CancelButton_Click"/>
             </StackPanel>
-            <Button Content="Quay lại" Height="36" Click="BackButton_Click"/>
+            <Button Content="Quay lại" Height="36" Width="100" Click="BackButton_Click"/>
         </StackPanel>
     </Grid>
 </Window> 
