@@ -1,3 +1,4 @@
+using BloodDonationSupportSystem.Dashboard;
 using System.Windows;
 
 namespace BloodDonationSupportSystem
@@ -13,6 +14,18 @@ namespace BloodDonationSupportSystem
         {
             new LoginWindow().Show();
             this.Close();
+        }
+
+        private void DashboardButton_Click(object sender, RoutedEventArgs e)
+        {
+            new DashboardWindow().Show();
+            Close();
+        }
+
+        private void AccountManagementButton_Click(object sender, RoutedEventArgs e)
+        {
+            new ManageAccountWindow().Show();
+            Close();
         }
     }
 } 
