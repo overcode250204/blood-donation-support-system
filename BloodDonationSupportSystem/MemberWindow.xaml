@@ -1,7 +1,10 @@
 <Window x:Class="BloodDonationSupportSystem.MemberWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Member" Height="200" Width="400">
+        Title="Member" 
+        Height="200" 
+        Width="400"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Welcome, Member!" FontSize="24" Margin="0,0,0,20"/>
